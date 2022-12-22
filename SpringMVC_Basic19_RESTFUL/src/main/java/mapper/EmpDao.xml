@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	// 삽입
+	int insert(Emp emp) throws ClassNotFoundException, SQLException;
+
+	// 전체 조회
+	List<Emp> select() throws ClassNotFoundException, SQLException;
+
+	// 조건 조회
+	Emp selectByEmpno(int empno) throws ClassNotFoundException, SQLException;
+
+	// 수정
+	int update(Emp empno) throws ClassNotFoundException, SQLException;
+
+	// 삭제
+	int delete(int empno) throws ClassNotFoundException, SQLException;
+ -->
+<mapper namespace="kr.or.kosa.dao.EmpDao">  <!-- 인터페이스의 네임스페이스와 동일하게 -->
+	
+	<select id="select" resultType="kr.or.kosa.dto.Emp">
+		select * from EMP order by EMPNO
+	</select>
+	
+		
+<!-- 	<select id="selectByEmpno" resultType="kosa.vo.Emp">
+		 select empno, ename, job, mgr, hiredate, sal, comm, deptno
+		 from EMP
+		 WHERE empno LIKE '%${param1}%' order by empno
+	</select> -->
+	
+
+	<select id="selectByEmpno" resultType="kr.or.kosa.dto.Emp">
+		 select empno, ename, job, mgr, hiredate, sal, comm, deptno
+		 from EMP
+		 where EMPNO=#{EMPNO}
+	</select>
+
+	<insert id="insert" parameterType="kr.or.kosa.dto.Emp">
+		insert into emp(empno, ename, job, mgr, hiredate, sal, comm, deptno)
+		values(#{empno}, #{ename}, #{job}, #{mgr}, sysdate, #{sal}, #{comm}, #{deptno})
+	</insert>
+	
+	
+	<delete id="delete">
+		delete from EMP where EMPNO=#{EMPNO}
+	</delete>
+	
+	
+	<update id="update" parameterType="kr.or.kosa.dto.Emp">
+	  update EMP
+	  set   
+	  		ename=#{ename},
+	  		job=#{job},
+	  		mgr=#{mgr},
+	  		sal=#{sal},
+	  		comm=#{comm},
+	 		deptno=#{deptno}
+	  where empno=#{empno}
+	</update>
+	
+</mapper>
+
+
+
+
+
