@@ -34,7 +34,7 @@ public class PageRankView extends AbstractExcelView {
 		HSSFSheet sheet = createFirstSheet(workbook);
 		createColumnLabel(sheet);
 
-		List<PageRank> pageRanks = (List<PageRank>) model.get("pageRankList");
+		List<PageRank> pageRanks = (List<PageRank>) model.get("pageRankList");  //컨트롤러에서 보낸 모델을 다운캐스팅
 		int rowNum = 1;
 		for (PageRank rank : pageRanks) {
 			createPageRankRow(sheet, rank, rowNum++);

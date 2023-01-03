@@ -3,6 +3,8 @@ package net.madvirus.spring4.chap08.stat;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,3 +36,14 @@ public class PageRankStatController {
 		return "pageReport";  //뷰에서 필요로 하는 데이터 값들을 DTO객체로 모델에 담아서 View로 보내준다
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
